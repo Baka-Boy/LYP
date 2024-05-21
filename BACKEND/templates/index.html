@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>Scrapper</title>
+    {% load static %}
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static '\images\favicon-32x32.png' %}">
+
+    <style>
+        *,
+        *::after,
+        *::before {
+          box-sizing: border-box;
+          margin: 0px;
+          padding: 0px;
+        } 
+
+         .container{
+            position: relative;
+            justify-content: center;
+            align-items: center; 
+            text-align: center; 
+
+        }
+        .form-label{
+            display: flex;
+            text-align: left;
+            align-items: flex-end;
+        }
+        .form-control{
+            background-color: #f8f9fad5 !important;
+        }
+        .form-control::placeholder{
+            color: rgba(8, 6, 29, 0.61);
+            font-weight: 500;
+        }
+        body {
+        	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        	background-size: 400% 400%;
+        	animation: gradient 15s ease infinite;
+        	height: 100vh;
+        }
+
+        @keyframes gradient {
+        	0% {
+        		background-position: 0% 50%;
+        	}
+        	50% {
+        		background-position: 100% 50%;
+        	}
+        	100% {
+        		background-position: 0% 50%;
+        	}
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container"><br>
+        <div class="heading">
+            <h1>Web Scrapping Analysis</h1>
+        </div><br>
+        <div class="webscrap">
+            <form action="scrapout" method="POST" target="_blank">{% csrf_token %}
+                <label class="form-label"><h4>1) URL</h4></label>
+                <input type="url" name="url" class="form-control"  id="exampleFormControlInput1" placeholder="Enter the URL(s) seperated by comma ',' " ><br>
+                <button type="submit" class="btn btn-primary">Scrap It Out (Web)</button>
+            </form>
+            
+        </div>
+        <br>
+        <div class="textscrap">
+            <form action="textscrapout" method="POST" target="_blank">{% csrf_token %}
+                <label class="form-label"><h4>2) TEXT</h4></label>
+                <input type="text" name="text" class="form-control"  id="exampleFormControlInput1" placeholder="Enter your Text" ><br>
+                <button type="submit" class="btn btn-primary">Scrap It Out (Text)</button>
+            </form><br>
+
+        </div>
+        
+    </div>
+    
+    
+    
+    
+    
+</body>
+</html>

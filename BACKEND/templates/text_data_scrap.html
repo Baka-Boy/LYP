@@ -1,0 +1,58 @@
+<!-- Write HTML code here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<title>Overall vibe + Graph + TableView</title>
+{% load static %}
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static '\images\favicon-32x32.png' %}">
+</head>
+<body>
+
+<div class="container"><br><br>
+
+	<h2 class="text-center">{{ vibe }}</h2><br><br>  <!-- rendering vibe -->
+	<div>
+		<h2 class="text-center"><u>Graph of the Sentimental(Emotional) Analysis</u></h2>
+		<div class="text-center">
+
+			<img class="img-fluid" src="data:image/png;base64, {{ data }}" alt=""> <br><br>
+		</div>
+
+
+	</div><br>	
+
+	<h2 class="text-center"><u>Scraped Out Data Analysis</u></h2><br>
+	<h2 style="width: 1200px;" class="text-center"><u>[Analysis of Scraped Out Words into Positive, Negative & Neutral]</u></h2><br>	<table class="table table-dark table-striped">
+		<thead>
+		<tr>
+			<!-- <th>Unnamed</th> -->
+			<th>Negative Words</th>
+			<th>Positive Words</th>
+			<th>Neutral Words</th>
+
+		</tr>
+		</thead>
+		<tbody>
+			{% if table %}
+			{% for i in table %}
+			<tr>
+				<!-- <td>{{i.Unnamed}}</td> -->
+				<td>{{i.Negative_Words}}</td>
+				<td>{{i.Positive_Words}}</td>
+				<td>{{i.Neutral_Words}}</td>
+
+			</tr>
+			{% endfor %}
+			{% endif %}
+		</tbody>
+	</table>
+</div>
+
+</body>
+</html>
